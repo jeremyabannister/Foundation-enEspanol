@@ -1,23 +1,30 @@
 // swift-tools-version: 6.0
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "Foundation-enEspanol",
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "Foundation-enEspanol",
-            targets: ["Foundation-enEspanol"]),
+            targets: ["Foundation-enEspanol"]
+        ),
+    ],
+    dependencies: [
+        .package(
+            url: "https://github.com/jeremyabannister/Swift-enEspanol",
+            "0.1.0" ..< "0.2.0"
+        )
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Foundation-enEspanol"),
+            name: "Foundation-enEspanol",
+            dependencies: [
+                "Swift-enEspanol",
+            ]
+        ),
         .testTarget(
-            name: "Foundation-enEspanolTests",
+            name: "Foundation-enEspanol-tests",
             dependencies: ["Foundation-enEspanol"]
         ),
     ]
